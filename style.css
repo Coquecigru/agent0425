@@ -5,6 +5,7 @@ body {
     font-family: monospace;
     margin: 0;
     padding: 10px;
+    overflow: hidden;
 }
 #terminal {
     width: 90%;
@@ -40,4 +41,20 @@ input[type="text"] {
 }
 .password-option:hover {
     background-color: #004400;
+}
+#scrolling-container {
+    display: flex;
+    height: 100vh;
+}
+#scrolling-text {
+    width: 70%;
+    overflow-y: hidden;
+    padding: 10px;
+    white-space: pre;
+    font-size: 12px;
+}
+#static-message {
+    width: 30%;
+    padding: 20px;
+    border-left: 2px solid #00ff00;
 }

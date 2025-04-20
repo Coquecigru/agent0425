@@ -56,7 +56,7 @@ function bruteForceGame() {
         el.innerText = pw;
         el.onclick = () => {
             if (pw === correctPassword) {
-                bruteForceDiv.innerHTML = "<p class='prompt'>" + finalMessage + "</p>";
+                showFinalSequence();
             } else {
                 el.style.backgroundColor = "#440000";
                 el.innerText = pw + " ✘";
@@ -64,4 +64,26 @@ function bruteForceGame() {
         };
         passwordList.appendChild(el);
     });
+}
+
+function showFinalSequence() {
+    document.body.innerHTML = `
+        <div id="scrolling-container">
+            <div id="scrolling-text"></div>
+            <div id="static-message">
+                <p class="prompt">> Transmission établie...</p>
+                <p class="prompt">> Bienvenue Agent 0425</p>
+                <p class="prompt">> Prêt à animer une mission d'envergure.</p>
+            </div>
+        </div>
+    `;
+    const scrolling = document.getElementById("scrolling-text");
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    setInterval(() => {
+        const line = Array(60).fill(0).map(() => characters[Math.floor(Math.random() * characters.length)]).join("");
+        scrolling.innerHTML += line + "<br>";
+        if (scrolling.children.length > 100) {
+            scrolling.removeChild(scrolling.children[0]);
+        }
+    }, 100);
 }
