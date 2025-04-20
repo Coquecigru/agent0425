@@ -1,0 +1,31 @@
+
+body {
+  background: black;
+  color: #33ff33;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 20px;
+}
+.terminal {
+  max-width: 800px;
+  margin: 0 auto;
+}
+#terminal-input {
+  width: 100%;
+  background: black;
+  border: none;
+  border-top: 1px solid #33ff33;
+  color: #33ff33;
+  font-size: 1em;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 10px;
+}
+#terminal-input:focus {
+  outline: none;
+}
+.blink {
+  animation: blink 1s infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}

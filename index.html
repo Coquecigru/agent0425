@@ -1,81 +1,23 @@
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accès sécurisé - Agent 0425</title>
-  <style>
-    body {
-      background-color: black;
-      color: #00ff00;
-      font-family: 'Courier New', monospace;
-      padding: 2rem;
-    }
-    .console {
-      border: 1px solid #00ff00;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-    input {
-      background: black;
-      color: #00ff00;
-      border: none;
-      border-bottom: 1px solid #00ff00;
-      font-family: inherit;
-      font-size: 1rem;
-      outline: none;
-      width: 100%;
-    }
-    .hidden {
-      display: none;
-    }
-  </style>
+  <title>Terminal - Accès restreint</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>> Connexion au serveur sécurisé [AGENT_0425]</h1>
-  <div class="console">
-    <p id="prompt">> Initialisation du terminal...</p>
-    <div id="step1">
-      <p>> Saisir commande d'accès :</p>
-      <input type="text" id="commandInput" placeholder="Ex: INIT_AGENT" />
-    </div>
-    <div id="step2" class="hidden">
-      <p>> Analyse du système... Ok.<br>> Déchiffrez ce code pour continuer : <strong>XVEHGR</strong></p>
-      <p>> Indice : Chiffre de César -3</p>
-      <input type="text" id="decodeInput" placeholder="Mot déchiffré..." />
-    </div>
-    <div id="finalMessage" class="hidden">
-      <p>>> ACCÈS AUTORISÉ ✅</p>
-      <p>>> Message secret :</p>
-      <p><em>Félicitations Agent Coquecigru. Vous avez prouvé votre flair et votre persévérance. Ce n'était pas une simple lettre de motivation. C'était une mission. Et vous venez de la réussir.</em></p>
-    </div>
+  <div class="terminal">
+    <pre id="terminal-output">> Initialisation du protocole d'accès...
+> Authentification : OK
+> Chargement des fichiers sécurisés...
+> Fichier "log_0425.dat" corrompu.
+> Tentative de récupération...
+
+</pre>
+    <input type="text" id="terminal-input" placeholder="> Entrez le code..." autofocus>
   </div>
-
-  <script>
-    const step1 = document.getElementById('step1');
-    const step2 = document.getElementById('step2');
-    const finalMessage = document.getElementById('finalMessage');
-    const commandInput = document.getElementById('commandInput');
-    const decodeInput = document.getElementById('decodeInput');
-
-    commandInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        if (commandInput.value.trim().toUpperCase() === 'INIT_AGENT') {
-          step1.classList.add('hidden');
-          step2.classList.remove('hidden');
-        }
-      }
-    });
-
-    decodeInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        if (decodeInput.value.trim().toUpperCase() === 'SECRET') {
-          step2.classList.add('hidden');
-          finalMessage.classList.remove('hidden');
-        }
-      }
-    });
-  </script>
+  <audio id="beep-sound" src="https://www.soundjay.com/button/sounds/beep-07.mp3" preload="auto"></audio>
+  <script src="script.js"></script>
 </body>
 </html>
