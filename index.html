@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Agent 0425</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00ff88;
+      font-family: 'Courier New', monospace;
+      padding: 2rem;
+    }
+    .terminal {
+      max-width: 800px;
+      margin: auto;
+    }
+    input {
+      background: #111;
+      color: #00ff88;
+      border: 1px solid #00ff88;
+      padding: 0.5rem;
+      font-family: inherit;
+    }
+    button {
+      background: #00ff88;
+      color: black;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border: none;
+      cursor: pointer;
+      margin-left: 0.5rem;
+    }
+    .secret {
+      margin-top: 2rem;
+      color: #ffffff;
+      background: #222;
+      padding: 1rem;
+      border-left: 5px solid #00ff88;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="terminal">
+    <h1>Connexion au serveur sécurisé...</h1>
+    <p>Authentification : <strong>OK</strong></p>
+    <p>Déverrouillage requis : Entrez le code d'accès 🔐</p>
+    <input type="text" id="code" placeholder="Code secret">
+    <button onclick="checkCode()">Valider</button>
+
+    <div id="secretMessage" class="secret">
+      <h2>🎉 Mission débloquée !</h2>
+      <p>Bravo, Agent. Si tu lis ceci, c’est que tu es curieux, malin et surtout persévérant.</p>
+      <p>Autant de qualités qu’un bon animateur se doit d’avoir !</p>
+      <p>Ce petit jeu n'était qu'un aperçu de l'univers créatif que je peux proposer. En espérant vous avoir donné envie d'en découvrir plus.</p>
+      <p>– Coquecigru 🕵️</p>
+    </div>
+  </div>
+
+  <script>
+    function checkCode() {
+      var code = document.getElementById("code").value;
+      if (code === "0425") {
+        document.getElementById("secretMessage").style.display = "block";
+      } else {
+        alert("Code incorrect. Veuillez réessayer.");
+      }
+    }
+  </script>
+</body>
+</html>
