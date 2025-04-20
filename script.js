@@ -1,21 +1,23 @@
 
-const input = document.getElementById("terminal-input");
-const output = document.getElementById("terminal-output");
-const beep = document.getElementById("beep-sound");
+const input = document.getElementById("cmdInput");
+const output = document.getElementById("output");
 
-input.addEventListener("keydown", function(event) {
-  if (event.key === "Enter") {
-    const value = input.value.trim();
-    beep.play();
-    output.textContent += "\n> " + value;
-    if (value === "0425") {
-      output.textContent += "\n> Code accepté. Accès autorisé.";
-      output.textContent += "\n> *** Félicitations Agent Coquecigru ***";
-      output.textContent += "\n> Vous avez débloqué la mission spéciale.";
+const commands = {
+  help: "Commandes disponibles : help, hint, access",
+  hint: "Essayez la commande 'access' pour continuer...",
+  access: "🔓 Accès accordé. Bien joué, agent. Vous avez débloqué le message secret : "Votre créativité est votre meilleure arme. Mission acceptée."",
+};
+
+input.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    const command = input.value.trim();
+    output.innerHTML += `<div><span class="prompt">agent0425@mission:~$</span> ${command}</div>`;
+    if (commands[command]) {
+      output.innerHTML += `<div>${commands[command]}</div>`;
     } else {
-      output.textContent += "\n> Code incorrect.";
+      output.innerHTML += `<div>Commande inconnue: ${command}</div>`;
     }
     input.value = "";
-    output.scrollTop = output.scrollHeight;
+    window.scrollTo(0, document.body.scrollHeight);
   }
 });

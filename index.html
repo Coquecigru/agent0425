@@ -2,22 +2,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Terminal - Accès restreint</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agent Terminal</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
   <div class="terminal">
-    <pre id="terminal-output">> Initialisation du protocole d'accès...
-> Authentification : OK
-> Chargement des fichiers sécurisés...
-> Fichier "log_0425.dat" corrompu.
-> Tentative de récupération...
-
-</pre>
-    <input type="text" id="terminal-input" placeholder="> Entrez le code..." autofocus>
+    <div id="output"></div>
+    <div class="input-line">
+      <span class="prompt">agent0425@mission:~$</span>
+      <input type="text" id="cmdInput" autofocus autocomplete="off"/>
+    </div>
   </div>
-  <audio id="beep-sound" src="https://www.soundjay.com/button/sounds/beep-07.mp3" preload="auto"></audio>
   <script src="script.js"></script>
 </body>
 </html>
