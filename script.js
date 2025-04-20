@@ -1,40 +1,67 @@
 
-const input = document.getElementById("terminal-input");
-const output = document.getElementById("terminal-output");
-const beep = document.getElementById("beep-sound");
+const output = document.getElementById('output');
+const codeInput = document.getElementById('codeInput');
+const bruteForceDiv = document.getElementById('bruteforce-game');
+const passwordList = document.getElementById('password-list');
 
-input.addEventListener("keydown", function(event) {
-  if (event.key === "Enter") {
-    const value = input.value.trim();
-    beep.play();
-    output.textContent += "\n> " + value;
-    if (value === "0425") {
-      output.textContent += "\n> Code accepté. Accès autorisé.";
-      output.textContent += "\n> *** Félicitations Agent Coquecigru ***";
-      output.textContent += "\n> Vous avez débloqué la mission spéciale.";
-    } else {
-      output.textContent += "\n> Code incorrect.";
+const expectedCode = "0425";
+const finalMessage = "> Accès autorisé. Félicitations Agent. Votre mission commence maintenant.";
+
+const introLines = [
+    "> Initialisation du protocole d'accès...",
+    "> Authentification : OK",
+    "> Chargement des fichiers sécurisés...",
+    '> Fichier "log_0425.dat" corrompu.',
+    "> Tentative de récupération..."
+];
+
+let currentLine = 0;
+
+function typeNextLine() {
+    if (currentLine < introLines.length) {
+        output.innerHTML += introLines[currentLine] + "\n";
+        currentLine++;
+        setTimeout(typeNextLine, 800);
     }
-    input.value = "";
-    output.scrollTop = output.scrollHeight;
-  }
+}
+typeNextLine();
+
+codeInput.addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+        if (codeInput.value === expectedCode) {
+            document.getElementById('input-container').classList.add("hidden");
+            bruteForceGame();
+        } else {
+            output.innerHTML += "> Code incorrect. Réessayez.\n";
+            codeInput.value = "";
+        }
+    }
 });
 
-    typeText("Accès autorisé. Bienvenue, agent 0425.");
-  }
-};
+function bruteForceGame() {
+    bruteForceDiv.classList.remove("hidden");
+    passwordList.innerHTML = "";
+    const correctPassword = "ACCESS_GRANTED";
+    const allPasswords = [];
 
-input.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    const command = input.value.trim();
-    const cmdLine = document.createElement("div");
-    cmdLine.innerHTML = '<span class="prompt">agent0425@mission:~$</span> ' + command;
-    output.appendChild(cmdLine);
-    input.value = "";
-    if (commands[command]) {
-      commands[command]();
-    } else {
-      typeText("Commande inconnue: " + command);
+    for (let i = 0; i < 9; i++) {
+        allPasswords.push("PASS_" + Math.random().toString(36).substring(2, 8).toUpperCase());
     }
-  }
-});
+    const insertAt = Math.floor(Math.random() * 10);
+    allPasswords.splice(insertAt, 0, correctPassword);
+
+    allPasswords.forEach(pw => {
+        const el = document.createElement("div");
+        el.className = "password-option";
+        el.innerText = pw;
+        el.onclick = () => {
+            if (pw === correctPassword) {
+                bruteForceDiv.innerHTML = "<p class='prompt'>" + finalMessage + "</p>";
+            } else {
+                el.style.backgroundColor = "#440000";
+                el.innerText = pw + " ✘";
+            }
+        };
+        passwordList.appendChild(el);
+    });
+}

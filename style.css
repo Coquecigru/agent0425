@@ -1,31 +1,43 @@
 
 body {
-  background: black;
-  color: #33ff33;
-  font-family: 'Courier New', Courier, monospace;
-  padding: 20px;
+    background-color: black;
+    color: #00ff00;
+    font-family: monospace;
+    margin: 0;
+    padding: 10px;
 }
-.terminal {
-  max-width: 800px;
-  margin: 0 auto;
+#terminal {
+    width: 90%;
+    margin: auto;
 }
-#terminal-input {
-  width: 100%;
-  background: black;
-  border: none;
-  border-top: 1px solid #33ff33;
-  color: #33ff33;
-  font-size: 1em;
-  font-family: 'Courier New', Courier, monospace;
-  padding: 10px;
+.prompt {
+    color: #00ff00;
 }
-#terminal-input:focus {
-  outline: none;
+.hidden {
+    display: none;
 }
-.blink {
-  animation: blink 1s infinite;
+#input-container {
+    margin-top: 10px;
 }
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+input[type="text"] {
+    background: black;
+    color: #00ff00;
+    border: none;
+    border-bottom: 1px solid #00ff00;
+    width: 300px;
+    font-family: monospace;
+    font-size: 1em;
+}
+#password-list {
+    margin-top: 20px;
+}
+.password-option {
+    padding: 5px;
+    border: 1px solid #00ff00;
+    margin: 3px;
+    display: inline-block;
+    cursor: pointer;
+}
+.password-option:hover {
+    background-color: #004400;
 }

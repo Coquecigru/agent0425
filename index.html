@@ -1,23 +1,23 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Terminal - Accès restreint</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Terminal Agent 0425</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
-  <div class="terminal">
-    <pre id="terminal-output">> Initialisation du protocole d'accès...
-> Authentification : OK
-> Chargement des fichiers sécurisés...
-> Fichier "log_0425.dat" corrompu.
-> Tentative de récupération...
-
-</pre>
-    <input type="text" id="terminal-input" placeholder="> Entrez le code..." autofocus>
-  </div>
-  <audio id="beep-sound" src="https://www.soundjay.com/button/sounds/beep-07.mp3" preload="auto"></audio>
-  <script src="script.js"></script>
+    <div id="terminal">
+        <pre id="output"></pre>
+        <div id="input-container">
+            <span class="prompt">> Entrez le code...</span>
+            <input type="text" id="codeInput" autofocus />
+        </div>
+        <div id="bruteforce-game" class="hidden">
+            <p class="prompt">> Brute force engagé... Cliquez sur le bon code pour accéder au message !</p>
+            <div id="password-list"></div>
+        </div>
+    </div>
 </body>
 </html>
