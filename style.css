@@ -2,31 +2,30 @@
 body {
   background: black;
   color: #33ff33;
-  font-family: monospace;
-  margin: 0;
-  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 20px;
 }
-
 .terminal {
-  padding: 1rem;
   max-width: 800px;
   margin: 0 auto;
 }
-
-.input-line {
-  display: flex;
-  align-items: center;
-}
-
-.prompt {
-  margin-right: 0.5em;
-}
-
-#cmdInput {
+#terminal-input {
+  width: 100%;
   background: black;
   border: none;
+  border-top: 1px solid #33ff33;
   color: #33ff33;
-  flex: 1;
-  font: inherit;
+  font-size: 1em;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 10px;
+}
+#terminal-input:focus {
   outline: none;
+}
+.blink {
+  animation: blink 1s infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
